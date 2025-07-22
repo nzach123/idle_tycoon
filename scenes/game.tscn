@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxycy5bsaucpx"]
+
+[ext_resource type="Texture2D" uid="uid://c28c2eqkuppvm" path="res://assets/Sprites/Gemini_Generated_Image_9eilcy9eilcy9eil.png" id="1_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://cosp6h358kj0h" path="res://assets/Sprites/Counter.png" id="2_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://80a0mdgh72" path="res://assets/Sprites/Counter_half.png" id="3_iywne"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(2.03952, 2.03952)
+texture = ExtResource("1_lnu2h")
+centered = false
+
+[node name="MainCounter" type="Sprite2D" parent="."]
+position = Vector2(1019.16, 527.27)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_lbhrr")
+
+[node name="CoffeeCounter" type="Sprite2D" parent="."]
+position = Vector2(1018.4, 839.16)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("3_iywne")
