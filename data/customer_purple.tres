@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CustomerData" load_steps=2 format=3 uid="uid://d0mlhrm3vw8c"]
+
+[ext_resource type="Script" uid="uid://dr5soit0qj4x6" path="res://data/customer_data.gd" id="1_taiki"]
+
+[resource]
+script = ExtResource("1_taiki")
+metadata/_custom_type_script = "uid://dr5soit0qj4x6"
