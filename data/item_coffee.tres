@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://demoglsjwbw2s"]
+
+[ext_resource type="Script" uid="uid://bxryuueo0ljob" path="res://data/item.gd" id="1_qtu6f"]
+[ext_resource type="Texture2D" uid="uid://ce1qhqk7bve3n" path="res://assets/Sprites/UI/Coffee.png" id="2_23krl"]
+
+[resource]
+script = ExtResource("1_qtu6f")
+id = "Coffee"
+type = 0
+sprite = ExtResource("2_23krl")
+cook_time = 8.0
+cook_time_reduce_perc = 0.7
+upgrade_cost = 3.0
+upgrade_multi = 1.3
+profit = 4.0
+profit_multi = 1.2
+max_level = 75
+metadata/_custom_type_script = "uid://bxryuueo0ljob"

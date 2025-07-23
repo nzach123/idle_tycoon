@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="Idle_tycoon"
-config/version="0.0.3"
+config/version="0.0.4"
 run/main_scene="uid://cxycy5bsaucpx"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://scripts/autoloads/game_manager.gd"
 
 [display]
 
