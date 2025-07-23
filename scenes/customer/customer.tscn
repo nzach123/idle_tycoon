@@ -30,6 +30,7 @@ unique_name_in_owner = true
 
 [node name="ItemBox" type="Control" parent="." index="2"]
 visible = false
+z_index = 3
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 0
@@ -39,6 +40,7 @@ offset_right = -48.0
 offset_bottom = -31.0
 
 [node name="TextureRect" type="TextureRect" parent="ItemBox" index="0"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

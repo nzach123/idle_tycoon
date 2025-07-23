@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cw2b4anapsrgm"]
+[gd_scene load_steps=11 format=3 uid="uid://cw2b4anapsrgm"]
 
 [ext_resource type="Script" uid="uid://ha78tx81okmd" path="res://scripts/cashier.gd" id="1_erpnb"]
 [ext_resource type="Texture2D" uid="uid://dxilnk31eil8p" path="res://assets/Sprites/shadow.png" id="1_ks7a0"]
 [ext_resource type="Texture2D" uid="uid://vukrm1i8u07n" path="res://assets/Sprites/Characters/blue_body_square.png" id="2_erpnb"]
 [ext_resource type="Texture2D" uid="uid://jf60677t635w" path="res://assets/Sprites/Characters/face_a.png" id="3_2t7dy"]
 [ext_resource type="Texture2D" uid="uid://dbv28pyc0a6sq" path="res://assets/Sprites/Characters/blue_hand_open.png" id="4_6b6cf"]
+[ext_resource type="PackedScene" uid="uid://d43kka7u85sx" path="res://scenes/UI/cook_bar.tscn" id="6_2t7dy"]
 
 [sub_resource type="Animation" id="Animation_hrvro"]
 length = 0.001
@@ -168,3 +169,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_5w2py")
 }
 autoplay = "idle"
+
+[node name="CookBar" parent="." instance=ExtResource("6_2t7dy")]
+visible = false
+offset_left = -42.0
+offset_top = -129.0
+offset_right = -42.0
+offset_bottom = -129.0
+scale = Vector2(0.65, 0.65)
+
+[connection signal="on_cook_completed" from="CookBar" to="." method="_on_cook_bar_on_cook_completed"]
