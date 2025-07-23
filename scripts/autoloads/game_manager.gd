@@ -1,6 +1,8 @@
 extends Node
 
 
+signal on_customer_request(customer: Customer)
+
 const ITEM_BURGER = preload("res://data/item_burger.tres")
 const ITEM_COFFEE = preload("res://data/item_coffee.tres")
 
