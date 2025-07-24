@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cxycy5bsaucpx"]
+[gd_scene load_steps=37 format=3 uid="uid://cxycy5bsaucpx"]
 
 [ext_resource type="Texture2D" uid="uid://c28c2eqkuppvm" path="res://assets/Sprites/Gemini_Generated_Image_9eilcy9eilcy9eil.png" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://cosp6h358kj0h" path="res://assets/Sprites/Counter.png" id="2_lbhrr"]
@@ -23,6 +23,7 @@
 [ext_resource type="FontFile" uid="uid://c568h3rhi8wdo" path="res://assets/Fonts/DINPro-Bold.otf" id="21_37s47"]
 [ext_resource type="Texture2D" uid="uid://jf60677t635w" path="res://assets/Sprites/Characters/face_a.png" id="22_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://dox0dqym800iu" path="res://assets/Sprites/UI/arrowUp.png" id="22_e1j6l"]
+[ext_resource type="Texture2D" uid="uid://ce4y0e5w5m2bb" path="res://assets/Sprites/UI/gear.png" id="23_e1j6l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bt5mj"]
 font = ExtResource("21_37s47")
@@ -54,6 +55,27 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bt5mj"]
 bg_color = Color(0.296911, 0.530711, 0.223819, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1j6l"]
+bg_color = Color(0.227451, 0.227451, 0.227451, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_e1j6l"]
+font = ExtResource("21_37s47")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_pl11u"]
+font = ExtResource("21_37s47")
+font_size = 48
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhx41"]
+bg_color = Color(0.235412, 0.580475, 0.312339, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnb83"]
+bg_color = Color(0.197916, 0.490677, 0.881938, 1)
 
 [node name="Game" type="Node2D"]
 
@@ -254,6 +276,21 @@ offset_right = 100.0
 offset_bottom = 40.0
 grow_vertical = 2
 icon = ExtResource("22_e1j6l")
+alignment = 0
+expand_icon = true
+
+[node name="OptionsButton" type="Button" parent="GameUI/BottomBar/Panel"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 110.0
+offset_top = -40.0
+offset_right = 190.0
+offset_bottom = 40.0
+grow_vertical = 2
+icon = ExtResource("23_e1j6l")
 alignment = 0
 expand_icon = true
 
@@ -608,12 +645,107 @@ theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_bt5mj")
 text = "50"
 
+[node name="Options" type="Control" parent="GameUI"]
+visible = false
+custom_minimum_size = Vector2(650, 450)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -225.0
+offset_right = 325.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="GameUI/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e1j6l")
+
+[node name="Label" type="Label" parent="GameUI/Options/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.5
+offset_top = 20.0
+offset_right = 98.5
+offset_bottom = 212.0
+grow_horizontal = 2
+text = "OPTIONS
+
+"
+label_settings = SubResource("LabelSettings_e1j6l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Options/Panel"]
+custom_minimum_size = Vector2(550, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -67.0
+offset_right = 275.0
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/Options/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameUI/Options/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "MUSIC"
+label_settings = SubResource("LabelSettings_pl11u")
+
+[node name="MusicSlider" type="HSlider" parent="GameUI/Options/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_bhx41")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GameUI/Options/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameUI/Options/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "SFX"
+label_settings = SubResource("LabelSettings_pl11u")
+
+[node name="SFXSlider" type="HSlider" parent="GameUI/Options/Panel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_qnb83")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
 [connection signal="pressed" from="GameUI/CoffeeButton" to="GameUI" method="_on_coffee_button_pressed"]
 [connection signal="pressed" from="GameUI/BurgerButton" to="GameUI" method="_on_burger_button_pressed"]
 [connection signal="pressed" from="GameUI/BottomBar/Panel/ShopButton" to="GameUI" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="GameUI/BottomBar/Panel/OptionsButton" to="GameUI" method="_on_options_button_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/FasterCoffeeCard/FasterCoffee" to="GameUI" method="_on_faster_coffee_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/FasterBurgerCard/FasterBurger" to="GameUI" method="_on_faster_burger_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/NewCashierCard/NewCashier1" to="GameUI" method="_on_new_cashier_1_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/NewCashierCard2/NewCashier2" to="GameUI" method="_on_new_cashier_2_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/NewCashierCard3/NewCashier3" to="GameUI" method="_on_new_cashier_3_pressed"]
+[connection signal="value_changed" from="GameUI/Options/Panel/VBoxContainer/HBoxContainer/MusicSlider" to="GameUI" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="GameUI/Options/Panel/VBoxContainer/HBoxContainer2/SFXSlider" to="GameUI" method="_on_sfx_slider_value_changed"]

@@ -13,6 +13,9 @@ class_name GameUI
 @onready var burger_panel: UpgradePanel = $BurgerPanel
 @onready var current_coins: Label = %CurrentCoins
 @onready var shop: Control = $Shop
+@onready var options: Control = $Options
+
+
 
 @onready var faster_coffee: Button = %FasterCoffee
 @onready var faster_burger: Button = %FasterBurger
@@ -30,17 +33,17 @@ class_name GameUI
 func _ready() -> void:
 	coffee_panel.init_upgrade_panel(GameManager.item_coffee)
 	burger_panel.init_upgrade_panel(GameManager.item_burger)
-	new_cashier_1.text = str(cashier_1_cost)
-	new_cashier_2.text = str(cashier_2_cost)
-	new_cashier_3.text = str(cashier_3_cost)
-	faster_coffee.text = str(faster_coffee_cost)
-	faster_burger.text = str(faster_burger_cost)
+	new_cashier_1.text = GameManager.format_coins(cashier_1_cost)
+	new_cashier_2.text = GameManager.format_coins(cashier_2_cost)
+	new_cashier_3.text = GameManager.format_coins(cashier_3_cost)
+	faster_coffee.text = GameManager.format_coins(faster_coffee_cost)
+	faster_burger.text = GameManager.format_coins(faster_burger_cost)
 	
 	
 	
 func _process(delta: float) -> void:
-	current_coins.text = str(GameManager.current_coins)
-
+	current_coins.text = GameManager.format_coins(GameManager.current_coins)
+	
 
 func show_hide_shop_panel() -> void:
 	shop.visible = true if not shop.visible else false
@@ -105,3 +108,18 @@ func _on_new_cashier_3_pressed() -> void:
 
 func _on_shop_button_pressed() -> void:
 	show_hide_shop_panel()
+
+
+
+func _on_music_slider_value_changed(value: float) -> void:
+	var music_index = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(music_index, linear_to_db(value))
+	
+
+func _on_sfx_slider_value_changed(value: float) -> void:
+	var sfx_index = AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(sfx_index, linear_to_db(value))
+
+
+func _on_options_button_pressed() -> void:
+	options.visible = true if not options.visible else false
