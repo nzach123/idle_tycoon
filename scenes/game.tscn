@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxycy5bsaucpx"]
+[gd_scene load_steps=23 format=3 uid="uid://cxycy5bsaucpx"]
 
 [ext_resource type="Texture2D" uid="uid://c28c2eqkuppvm" path="res://assets/Sprites/Gemini_Generated_Image_9eilcy9eilcy9eil.png" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://cosp6h358kj0h" path="res://assets/Sprites/Counter.png" id="2_lbhrr"]
@@ -16,6 +16,15 @@
 [ext_resource type="PackedScene" uid="uid://c6cwh8d5a148y" path="res://scenes/customer/customer.tscn" id="14_1kice"]
 [ext_resource type="Script" uid="uid://cbq71l3svpchf" path="res://scripts/cashier_manager.gd" id="15_ca42v"]
 [ext_resource type="Script" uid="uid://blnpngl0rq8ys" path="res://scripts/counter_manager.gd" id="15_ir15t"]
+[ext_resource type="Script" uid="uid://cno8h2sr5n878" path="res://scripts/game_ui.gd" id="17_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://c6qonp7irftka" path="res://scenes/UI/upgrade_panel.tscn" id="18_264po"]
+[ext_resource type="Texture2D" uid="uid://dp00mcbql5s7q" path="res://assets/Sprites/UI/Arrow.png" id="19_264po"]
+[ext_resource type="Texture2D" uid="uid://do1b40tfqg775" path="res://assets/Sprites/UI/coin_gold.png" id="20_5newe"]
+[ext_resource type="FontFile" uid="uid://c568h3rhi8wdo" path="res://assets/Fonts/DINPro-Bold.otf" id="21_37s47"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bt5mj"]
+font = ExtResource("21_37s47")
+font_size = 70
 
 [node name="Game" type="Node2D"]
 
@@ -97,4 +106,92 @@ position = Vector2(950, 800)
 [node name="Marker2D2" type="Marker2D" parent="."]
 position = Vector2(1100, 800)
 
+[node name="GameUI" type="CanvasLayer" parent="."]
+script = ExtResource("17_ssvqc")
+
+[node name="CoffeePanel" parent="GameUI" instance=ExtResource("18_264po")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -325.0
+offset_right = 275.0
+offset_bottom = 325.0
+
+[node name="BurgerPanel" parent="GameUI" instance=ExtResource("18_264po")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -325.0
+offset_right = 275.0
+offset_bottom = 325.0
+
+[node name="CoffeeButton" type="TextureButton" parent="GameUI"]
+offset_left = 953.0
+offset_top = 863.0
+offset_right = 1017.0
+offset_bottom = 927.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("19_264po")
+
+[node name="BurgerButton" type="TextureButton" parent="GameUI"]
+offset_left = 1112.0
+offset_top = 863.0
+offset_right = 1176.0
+offset_bottom = 927.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("19_264po")
+
+[node name="TopBar" type="Control" parent="GameUI"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="GameUI/TopBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/TopBar/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -32.0
+offset_right = 34.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="TextureRect" type="TextureRect" parent="GameUI/TopBar/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("20_5newe")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CurrentCoins" type="Label" parent="GameUI/TopBar/Panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_bt5mj")
+
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="GameUI/CoffeeButton" to="GameUI" method="_on_coffee_button_pressed"]
+[connection signal="pressed" from="GameUI/BurgerButton" to="GameUI" method="_on_burger_button_pressed"]
