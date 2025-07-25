@@ -14,7 +14,7 @@ const COIN_VFX = preload("res://scenes/VFX/coin_vfx.tscn")
 var coffee_item_counter_pos:= Vector2(950,800)
 var burger_item_counter_pos:= Vector2(1100,800)
 
-var current_coins: int = 100000
+var current_coins: int = 25
 
 
 func play_coin_vfx(spawn_pos: Vector2) -> void:
