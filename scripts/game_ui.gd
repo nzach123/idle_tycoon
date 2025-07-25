@@ -70,7 +70,7 @@ func _on_faster_coffee_pressed() -> void:
 	SoundManager.play_ui()
 	if GameManager.current_coins >= faster_coffee_cost:
 		GameManager.current_coins -= faster_coffee_cost
-		GameManager.item_coffee.cook_time = 1
+		GameManager.item_coffee.cook_time *= 0.5
 		faster_coffee_card.hide()
 	
 

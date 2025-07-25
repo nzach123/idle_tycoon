@@ -117,7 +117,7 @@ customer_sprites = Array[ExtResource("8_trtic")]([ExtResource("9_ir15t"), ExtRes
 customer_scene = ExtResource("14_1kice")
 
 [node name="SpawnTimer" type="Timer" parent="CustomerManager"]
-wait_time = 4.0
+wait_time = 8.0
 autostart = true
 
 [node name="TopSpawnPos" type="Marker2D" parent="CustomerManager"]
