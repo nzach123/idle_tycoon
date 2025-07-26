@@ -4,7 +4,6 @@ class_name CustomerManager
 
 
 @export var spawn_positions: Array[Marker2D]
-@export var customer_sprites: Array[CustomerData]
 @export var customer_scene: PackedScene
 
 @onready var counter_manager: CounterManager = %CounterManager
@@ -18,9 +17,8 @@ func spawn_customer() -> void:
 	add_child(customer)
 	
 	#Get random sprites
-	var sprite_data: CustomerData = customer_sprites.pick_random()
-	customer.set_sprites(sprite_data)
-	print()
+	customer.randomize_appearance()
+	
 	#Get random item and quantity
 	var random_quantity: int = randi_range(1,3)
 	var random_item: Item = GameManager.get_random_item()

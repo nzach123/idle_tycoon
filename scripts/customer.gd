@@ -63,11 +63,23 @@ func order_completed() -> void:
 	tween.finished.connect(func(): GameManager.on_customer_order_competed.emit(self))
 		
 	
-func set_sprites(data: CustomerData)-> void:
-	body.texture = data.body
-	face.texture = data.face
-	hand_left.texture = data.hand
-	hand_right.texture = data.hand
+func randomize_appearance() -> void:
+	var color_keys = CustomerSprites.bodies.keys()
+	var random_color = color_keys.pick_random()
+	
+	var body_keys = CustomerSprites.bodies[random_color].keys()
+	var random_body = body_keys.pick_random()
+	
+	var hand_keys = CustomerSprites.hands[random_color].keys()
+	var random_hand = hand_keys.pick_random()
+	
+	var random_face = CustomerSprites.faces.pick_random()
+	
+	body.texture = CustomerSprites.bodies[random_color][random_body]
+	face.texture = random_face
+	hand_left.texture = CustomerSprites.hands[random_color][random_hand]
+	hand_right.texture = CustomerSprites.hands[random_color][random_hand]
+	
 	
 func play_move_anim() -> void:
 	anim_player.play("move")
